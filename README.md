@@ -4,9 +4,9 @@ This repository is about the free use of chatgpt technology using various telegr
 
 # Run
 To run this code on your computer, install pytelegrambotapi and telegraph.  
-'''
+```
 pip install pyTelegramBotAPI
-pip install telegraph
-'''
+pip install telethon
+```
 Next, follow all the instructions that are specified in the head docstring of the omd.py file.
 Good luck and have fun! 
