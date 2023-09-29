@@ -10,7 +10,6 @@
         PHONE = "PHONE"
     3. use this script :)
 '''
-
 import time
 from dotenv import dotenv_values
 from telethon.tl.functions.messages import GetHistoryRequest
