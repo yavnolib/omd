@@ -1,8 +1,10 @@
 # Guido van Rossum <guido@python.org>
 '''
     Before start:
-    1. create app in "Creating an application" on the https://my.telegram.org/apps
-    2. create ".env" file (in same directory) in which write:
+    1. create app in "Creating an application" 
+        on the https://my.telegram.org/apps
+    2. create ".env" file (in same directory) 
+        in which write:
         API_ID = API-ID
         API_HASH = "API-HASH"
         PHONE = "PHONE"
@@ -11,8 +13,6 @@
 
 import time
 from dotenv import dotenv_values
-from telethon.tl.functions.messages import GetDialogsRequest
-from telethon.tl.types import InputPeerEmpty
 from telethon.tl.functions.messages import GetHistoryRequest
 from telethon.sync import TelegramClient
 
@@ -24,7 +24,9 @@ class Telega:
 
     def __init__(self):
         '''
-            Load .env file and start TelegramClient 
+            Load .env file 
+            and 
+            start TelegramClient 
         '''
         env = dotenv_values('.env')
         api_id = int(env['API_ID'])
@@ -38,8 +40,10 @@ class Telega:
             Post message to tg-channel
         '''
         destination_channel_username = bot_name
-        entity = self.client.get_entity(destination_channel_username)
-        res = self.client.send_message(entity=entity, message=text)
+        entity = self.client\
+            .get_entity(destination_channel_username)
+        res = self.client\
+            .send_message(entity=entity, message=text)
         return res
 
     def get_last_msg(self, bot_name: str) -> str:
@@ -47,7 +51,8 @@ class Telega:
             Get last message from tg-channel
         '''
         destination_channel_username = bot_name
-        entity = self.client.get_entity(destination_channel_username)
+        entity = self.client\
+            .get_entity(destination_channel_username)
         posts = self.client(GetHistoryRequest(
             peer=entity,
             limit=1,
@@ -62,7 +67,8 @@ class Telega:
 
 class GPT:
     '''
-        Uses telegram to gain access to GPT and asks him a question
+        Uses telegram to gain access to GPT 
+        and asks him a question
     '''
 
     def __init__(self, template: str, answer: bool):
@@ -73,35 +79,56 @@ class GPT:
         self.answer = answer
         self.template = template
         self.start = 'Продолжи историю:'
-        self.default_no = 'Дождь не пошел и забытый зонтик не помешал утке насладиться барной атмосферной.'
-        self.default_yes = 'Оказалось, что у утки лапки, и зонт она держать не умеет, от этого ей еще больше захотелось в бар.'
-        self.template += 'Взяла зонтик.' if answer else 'Забыла зонтик.'
+        self.default_no = 'Дождь не пошел и забытый зонтик' \
+            + ' не помешал утке насладиться барной атмосферной.'
+        self.default_yes = 'Оказалось, что у утки лапки, и ' \
+            + 'зонт она держать не умеет, от этого ей еще ' \
+            + 'больше захотелось в бар.'
+        self.template += 'Взяла зонтик.' \
+            if answer else 'Забыла зонтик.'
 
-    def post_and_get(self, bot_name='Jarvis_IT_Assistant_bot') -> str:
+    def post_and_get(self,
+                     bot_name='Jarvis_IT_Assistant_bot') -> str:
         '''
             Post and get message using the telegram-client
         '''
         if bot_name == 'Jarvis_IT_Assistant_bot':
             entity = self.tg.client.get_entity(bot_name)
-            self.tg.client.send_message(entity=entity, message='/context')
+            self.tg.client.send_message(entity=entity,
+                                        message='/context')
         elif bot_name == 'GPT4Telegrambot':
             entity = self.tg.client.get_entity(bot_name)
             self.tg.client.send_message(
                 entity=entity, message='/deletecontext')
         else:
-            return self.template + self.default_no if self.answer else self.default_yes
+            return self.template + self.default_no \
+                if self.answer else self.default_yes
         time.sleep(0.5)
 
-        text = self.start + self.template + '\nВ конце сообщения напиши надпись "b.c.d."'
-        post = self.tg.post_gpt(
+        text = self.start + self.template \
+            + '\nВ конце сообщения напиши надпись "b.c.d."'
+        self.tg.post_gpt(
             text, bot_name)
         flag = True
         while flag:
             resp = self.tg.get_last_msg(bot_name)
-            flag = 'b.c.d.' not in resp if text not in resp else True
+            flag = 'b.c.d.' not in resp \
+                if text not in resp else True
             time.sleep(0.2)
         resp = resp.split('b.c.d.')[0]
         return resp
+
+
+def choice(options: list, text: str):
+    '''
+        Function for choice-activity
+    '''
+    option = ''
+    print(text)
+    while option not in options:
+        print('Выберите: {}/{}'.format(*options))
+        option = input().lower()
+    return options[option]
 
 
 def step1():
@@ -112,24 +139,18 @@ def step1():
         '''
             Second step (if answer is yes)
         '''
-        option = ''
-        print('А на улице был дождь?')
-        while option not in options:
-            print('Выберите: {}/{}'.format(*options))
-            option = input().lower()
-        template += 'На улице был дождь.' if options[option] else 'На улице не было дождя.'
+        template += 'На улице был дождь.' \
+            if choice(options, 'А на улице был дождь?') \
+            else 'На улице не было дождя.'
         return step3(template, True)
 
     def step2_no_umbrella(template: str):
         '''
             Second step (if answer is no)
         '''
-        option = ''
-        print('Она пошла одна?')
-        while option not in options:
-            print('Выберите: {}/{}'.format(*options))
-            option = input().lower()
-        template += 'Она пошла одна.' if options[option] else 'Она пошла не одна.'
+        template += 'Она пошла одна.' \
+            if choice(options, 'Она пошла одна?') \
+            else 'Она пошла не одна.'
         return step3(template, False)
 
     def step3(template: str, umbrella: bool):
@@ -142,15 +163,9 @@ def step1():
 
     template = 'Утка-маляр 🦆 решила выпить зайти в бар. '
     question = 'Взять ей зонтик? ☂️'
-    print(template, question)
-
-    option = ''
     options = {'да': True, 'нет': False}
-    while option not in options:
-        print('Выберите: {}/{}'.format(*options))
-        option = input().lower()
 
-    if options[option]:
+    if choice(options, template + question):
         return step2_umbrella(template)
     return step2_no_umbrella(template)
 
