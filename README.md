@@ -34,4 +34,6 @@ Current salary
 3. Save the summary report from the previous paragraph as a csv file. In this case, it is not necessary to first call the command from step 2
 
 # HW3
-no comments
+### About
+Implementation of the CountVectorizer class for text vectorization. Can be useful for natural language processing tasks.
+
