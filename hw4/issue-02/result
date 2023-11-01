@@ -1,0 +1,37 @@
+$ pytest -v
+============================= test session starts ==============================
+platform linux -- Python 3.9.13, pytest-7.4.3, pluggy-1.0.0 -- /home/yaroslav/anaconda3/bin/python
+cachedir: .pytest_cache
+rootdir: /home/yaroslav/progs/aaa_py/homeworks/hw4/issue-02
+plugins: anyio-3.5.0, xdist-3.2.1
+collected 3 items                                                              
+
+test_decoder.py::test_decode[.- -... -.-.-ABC] PASSED                    [ 33%]
+test_decoder.py::test_decode[.... --- .--   .- .-. .   -.-- --- ..- ..--..-HOW ARE YOU?] FAILED [ 66%]
+test_decoder.py::test_decode[--... --... --...-777] PASSED               [100%]
+
+=================================== FAILURES ===================================
+___ test_decode[.... --- .--   .- .-. .   -.-- --- ..- ..--..-HOW ARE YOU?] ____
+
+morse_message = '.... --- .--   .- .-. .   -.-- --- ..- ..--..'
+result = 'HOW ARE YOU?'
+
+    @pytest.mark.parametrize(
+        "morse_message,result",
+        [
+            (".- -... -.-.", "ABC"),
+            (".... --- .--   .- .-. .   -.-- --- ..- ..--..", "HOW ARE YOU?"),
+            ("--... --... --...", "777"),
+        ],
+    )
+    def test_decode(morse_message, result):
+>       assert decode(morse_message) == result
+E       AssertionError: assert 'HOWAREYOU?' == 'HOW ARE YOU?'
+E         - HOW ARE YOU?
+E         ?    -   -
+E         + HOWAREYOU?
+
+test_decoder.py:73: AssertionError
+=========================== short test summary info ============================
+FAILED test_decoder.py::test_decode[.... --- .--   .- .-. .   -.-- --- ..- ..--..-HOW ARE YOU?] - AssertionError: assert 'HOWAREYOU?' == 'HOW ARE YOU?'
+========================= 1 failed, 2 passed in 0.07s ==========================
