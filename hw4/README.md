@@ -10,7 +10,6 @@
 * Запустить файл `test_morse.py`, используя команду `python3 -m doctest -v -o ELLIPSIS test_morse.py` или просто запустить `test_morse.py`.
  
 
- 
 ## ISSUE-02
  
 В этой директории протестирована функция $\textit{decode()}$ с помощью `pytest.mark.parametrize`.
@@ -20,7 +19,8 @@
 Для запуска необходимо:
 * Склонировать проект
 * Зайти в директорию issue-02
-* Запустить pytest, используя команду $\newline$ $\textbf{pytest -v} \newline$
+* Запустить pytest, используя команду `pytest -v`
+ 
 
 ## ISSUE-03
  
