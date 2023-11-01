@@ -1,6 +1,6 @@
 ## ISSUE-02
  
-В этой директории протестирована функция $\textit{decode()}$ с помощью `pytest.mark.parametrize`.
+В этой директории протестирована функция `decode()` с помощью `pytest.mark.parametrize`.
  
 #### Run
  
