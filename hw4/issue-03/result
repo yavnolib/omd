@@ -1,0 +1,10 @@
+$ python3 -m unittest -v test_one_hot.py 
+test_abc (test_one_hot.TestOneHotEncoder) ... ok
+test_empty (test_one_hot.TestOneHotEncoder) ... ok
+test_moscow (test_one_hot.TestOneHotEncoder) ... ok
+test_ny (test_one_hot.TestOneHotEncoder) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK

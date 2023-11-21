@@ -1,0 +1,15 @@
+$ pytest -v
+============================= test session starts ==============================
+platform linux -- Python 3.9.13, pytest-7.4.3, pluggy-1.0.0 -- /home/yaroslav/anaconda3/bin/python
+cachedir: .pytest_cache
+rootdir: /home/yaroslav/progs/aaa_py/homeworks/hw4/issue-04
+plugins: anyio-3.5.0, xdist-3.2.1
+collected 5 items                                                              
+
+test_onehot.py::test_moscow PASSED                                       [ 20%]
+test_onehot.py::test_empty PASSED                                        [ 40%]
+test_onehot.py::test_ny[New York-result0] PASSED                         [ 60%]
+test_onehot.py::test_ny[what1-result1] PASSED                            [ 80%]
+test_onehot.py::test_abc PASSED                                          [100%]
+
+============================== 5 passed in 0.02s ===============================

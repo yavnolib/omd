@@ -1,0 +1,22 @@
+$ python3 -m pytest -v test_api.py 
+============================= test session starts ==============================
+platform linux -- Python 3.9.13, pytest-7.4.3, pluggy-1.0.0 -- /home/yaroslav/anaconda3/bin/python
+cachedir: .pytest_cache
+rootdir: /home/yaroslav/progs/aaa_py/homeworks/hw4/issue-05
+plugins: cov-4.1.0, anyio-3.5.0, xdist-3.2.1
+collected 3 items                                                              
+
+test_api.py::test_value_error PASSED                                     [ 33%]
+test_api.py::test_first_if PASSED                                        [ 66%]
+test_api.py::test_elif PASSED                                            [100%]
+
+============================== 3 passed in 0.02s ===============================
+
+
+$ python3 -m pytest -q test_api.py --cov . --cov-report html
+...                                                                      [100%]
+
+---------- coverage: platform linux, python 3.9.13-final-0 -----------
+Coverage HTML written to dir htmlcov
+
+3 passed in 0.05s
