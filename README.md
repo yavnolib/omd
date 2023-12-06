@@ -96,4 +96,9 @@ Implementation of the CountVectorizer class for text vectorization. Can be usefu
 * Запустить `pytest`, используя команду $\newline$ $\textbf{python3 -m pytest -v test_api.py } \newline$
 * Запустить `pytest-cov`, используя команду $\newline$ $\textbf{python3 -m pytest -q test_api.py --cov . --cov-report html} \newline$ 
 
- 
+ # HW-advanced-1
+Описан класс, который наследуется от Mixin и динамически создает атрибуты экземпляра класса из атрибутов JSON-объекта. 
+
+* К атрибутам любой вложенности можно обращаться через точку
+* К названиям атрибутов, являющихся ключевыми словами python, в конце названия добавляется "_"
+* Содержит текстовое представление объектов класса Advert, с использованием ColorizeMixin - цветного вывода в консоль
