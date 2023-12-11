@@ -40,6 +40,7 @@ Implementation of the CountVectorizer class for text vectorization. Can be usefu
 # HW4
 ## ISSUE-01
  
+
 В этой директории протестирована функция `encode()` с помощью `doctest`.
  
 #### Run
@@ -47,6 +48,7 @@ Implementation of the CountVectorizer class for text vectorization. Can be usefu
 Для запуска необходимо:
 * Склонировать проект
 * Зайти в директорию issue-01
+
 * Запустить файл `test_morse.py`, используя команду `python3 -m doctest -v -o ELLIPSIS test_morse.py` или просто запустить `test_morse.py`.
  
 
@@ -59,6 +61,7 @@ Implementation of the CountVectorizer class for text vectorization. Can be usefu
 Для запуска необходимо:
 * Склонировать проект
 * Зайти в директорию issue-02
+
 * Запустить pytest, используя команду `pytest -v`
  
 
@@ -73,6 +76,7 @@ Implementation of the CountVectorizer class for text vectorization. Can be usefu
 Для запуска необходимо:
 * Склонировать проект
 * Зайти в директорию issue-03
+
 * Запустить `unittest`, используя команду `python3 -m unittest -v test_one_hot.py`
 или просто запустить файл `test_one_hot.py`
  
@@ -86,6 +90,7 @@ Implementation of the CountVectorizer class for text vectorization. Can be usefu
 Для запуска необходимо:
 * Склонировать проект
 * Зайти в директорию issue-04
+
 * Запустить `pytest`, используя команду `pytest -v`. 
 
 ## ISSUE-05
@@ -95,10 +100,14 @@ Implementation of the CountVectorizer class for text vectorization. Can be usefu
 #### Run
  
 Для запуска необходимо:
-* Склонировать проект.
-* Зайти в директорию issue-05.
+* Склонировать проект
+* Зайти в директорию issue-05
 * Запустить `pytest`, используя команду `python3 -m pytest -v test_api.py`.
-* Запустить `pytest-cov`, используя команду `python3 -m pytest -q test_api.py --cov . --cov-report html`. 
- 
+* Запустить `pytest-cov`, используя команду `python3 -m pytest -q test_api.py --cov . --cov-report html`.
 
+ # HW-advanced-1
+Описан класс, который наследуется от Mixin и динамически создает атрибуты экземпляра класса из атрибутов JSON-объекта. 
 
+* К атрибутам любой вложенности можно обращаться через точку
+* К названиям атрибутов, являющихся ключевыми словами python, в конце названия добавляется "_"
+* Содержит текстовое представление объектов класса Advert, с использованием ColorizeMixin - цветного вывода в консоль
